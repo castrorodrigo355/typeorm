@@ -4,9 +4,6 @@ import cors from "cors";
 import userRouter from "./routes/user";
 import taskRouter from "./routes/task";
 import { userMiddleware } from './middlewares/user';
-// import { createConnection } from "typeorm";
-// import countryRouter from "./routes/country";
-// import authRouter from "./routes/auth";
 
 export default class Server {
     public app: express.Application;
@@ -21,9 +18,6 @@ export default class Server {
         this.app.use(express.urlencoded({ extended: false }));
         this.app.use(`/api/v1/usersUrl`, userMiddleware, userRouter)
         this.app.use(`/api/v1/tasksUrl`, userMiddleware, taskRouter)
-        // this.app.use(`${process.env.SERVER_APP_URL_COUNTRIES}`, countryRouter)
-        // this.app.use(`${process.env.SERVER_APP_URL_INIT}`, authRouter)
-        
     }
 
     static init(p: number) {
